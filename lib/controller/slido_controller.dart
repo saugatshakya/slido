@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class Slido extends GetxController {
-  bool backGroundMusic = true;
+  bool backGroundMusic = false;
   bool uiSound = true;
   bool gameSound = true;
   double backgroungMusicVolume = 0.1;

@@ -111,8 +111,8 @@ class _LoadingState extends State<Loading> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    slido.init();
     WidgetsBinding.instance!.addObserver(this);
-
     setup();
     beginAnim();
   }
