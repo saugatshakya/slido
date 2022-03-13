@@ -69,13 +69,19 @@ class _LoadingState extends State<Loading> with WidgetsBindingObserver {
   }
 
   beginAnim() {
+    bool extend = kIsWeb ? kIsWeb : Platform.isWindows;
     timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
       for (int i = 0; i < letterWidgetProperties.length; i++) {
         if (letterWidgetProperties[i]["top"] >=
-            window.physicalSize.longestSide / window.devicePixelRatio) {
-          letterWidgetProperties[i]["left"] = Random().nextInt(
-                  (window.physicalSize.shortestSide / window.devicePixelRatio)
-                      .floor()) *
+            (extend
+                    ? window.physicalSize.shortestSide
+                    : window.physicalSize.longestSide) /
+                window.devicePixelRatio) {
+          letterWidgetProperties[i]["left"] = Random().nextInt(((extend
+                      ? window.physicalSize.longestSide
+                      : window.physicalSize.shortestSide /
+                          window.devicePixelRatio)
+                  .floor())) *
               1.0;
           letterWidgetProperties[i]["top"] = (Random().nextInt(80) + 40) * -1.0;
           letterWidgetProperties[i]["depth"] = Random().nextInt(5) + 1;
